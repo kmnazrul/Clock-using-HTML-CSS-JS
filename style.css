@@ -2,19 +2,12 @@ body {
   text-align: center;
 }
 #container {
-  background-image: linear-gradient(
-    125deg,
-    red,
-    orange,
-    yellow,
-    gold,
-    goldenrod
-  );
-  color: royalblue;
+  background-image: radial-gradient(yellow, red);
+  color: white;
   padding: 0.2rem;
   width: 60vh;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 1rem;
 }
 
 h1 {
