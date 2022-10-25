@@ -10,29 +10,6 @@ setInterval(() => {
   let year = d.getFullYear();
   let session;
 
-  // Analogue Clock
-
-  function setClock() {
-    const secondsRatio = seconds / 60;
-    const minutesRatio = (secondsRatio + minutes) / 60;
-    const hoursRatio = (minutesRatio + hours) / 12;
-
-    const hourHand = document.getElementById('hour');
-    const minuteHand = document.getElementById('minute');
-    const secondHand = document.getElementById('second');
-
-    setRotation(secondHand, secondsRatio);
-    setRotation(minuteHand, minutesRatio);
-    setRotation(hourHand, hoursRatio);
-  }
-
-  function setRotation(e, rotationRatio) {
-    e.style.setProperty('--rotation', rotationRatio * 360);
-  }
-
-  setClock();
-  // Analogue Clock end
-
   if (hours > 12) {
     hours = hours - 12;
     session = 'PM';
@@ -71,4 +48,27 @@ setInterval(() => {
 
   time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + session;
   calender.innerHTML = `${day}, ${date}-${month}-${year}`;
+
+  // Analogue Clock
+
+  function setClock() {
+    const secondsRatio = seconds / 60;
+    const minutesRatio = (secondsRatio + minutes) / 60;
+    const hoursRatio = (minutesRatio + hours) / 12;
+
+    const hourHand = document.getElementById('hour');
+    const minuteHand = document.getElementById('minute');
+    const secondHand = document.getElementById('second');
+
+    setRotation(secondHand, secondsRatio);
+    setRotation(minuteHand, minutesRatio);
+    setRotation(hourHand, hoursRatio);
+  }
+
+  function setRotation(e, rotationRatio) {
+    e.style.setProperty('--rotation', rotationRatio * 360);
+  }
+
+  setClock();
+  // Analogue Clock end
 }, 100);
