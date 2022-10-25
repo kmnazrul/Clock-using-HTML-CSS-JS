@@ -1,6 +1,20 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
 body {
+  background: linear-gradient(to right, lightblue, lightgreen);
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  justify-content: space-evenly;
+}
+
+.digital-clock {
   text-align: center;
 }
+
 #container {
   background-image: radial-gradient(yellow, red);
   color: white;
@@ -19,4 +33,99 @@ h1 {
 
 #date {
   font-size: 2rem;
+}
+
+.analogue-clock {
+  width: 300px;
+  height: 300px;
+  background-color: rgba(0, 255, 255, 0.664);
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+}
+
+.analogue-clock .number {
+  --rotation: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform: rotate(var(--rotation));
+  font-size: 1.5rem;
+}
+
+.analogue-clock .number1 {
+  --rotation: 30deg;
+}
+.analogue-clock .number2 {
+  --rotation: 60deg;
+}
+.analogue-clock .number3 {
+  --rotation: 90deg;
+}
+.analogue-clock .number4 {
+  --rotation: 120deg;
+}
+.analogue-clock .number5 {
+  --rotation: 150deg;
+}
+.analogue-clock .number6 {
+  --rotation: 180deg;
+}
+.analogue-clock .number7 {
+  --rotation: 210deg;
+}
+.analogue-clock .number8 {
+  --rotation: 240deg;
+}
+.analogue-clock .number9 {
+  --rotation: 270deg;
+}
+.analogue-clock .number10 {
+  --rotation: 300deg;
+}
+.analogue-clock .number11 {
+  --rotation: 330deg;
+}
+
+.analogue-clock .hand {
+  --rotation: 0;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  background-color: black;
+  border: 1px solid white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
+
+.analogue-clock::after {
+  content: '';
+  position: absolute;
+  background-color: black;
+  z-index: 11;
+  width: 15px;
+  height: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.analogue-clock .hand.second {
+  width: 3px;
+  height: 45%;
+  background-color: red;
+}
+.analogue-clock .hand.minute {
+  width: 5px;
+  height: 40%;
+  background-color: black;
+}
+.analogue-clock .hand.hour {
+  width: 10px;
+  height: 30%;
+  background-color: black;
 }

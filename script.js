@@ -49,3 +49,28 @@ setInterval(() => {
   time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + session;
   calender.innerHTML = `${day}, ${date}-${month}-${year}`;
 }, 100);
+
+// Analogue Clock
+setInterval(setClock, 10);
+
+function setClock() {
+  const d = new Date();
+  const secondsRatio = d.getSeconds() / 60;
+  const minutesRatio = (secondsRatio + d.getMinutes()) / 60;
+  const hoursRatio = (minutesRatio + d.getHours()) / 12;
+
+  const hourHand = document.getElementById('hour');
+  const minuteHand = document.getElementById('minute');
+  const secondHand = document.getElementById('second');
+
+  setRotation(secondHand, secondsRatio);
+  setRotation(minuteHand, minutesRatio);
+  setRotation(hourHand, hoursRatio);
+}
+
+function setRotation(e, rotationRatio) {
+  e.style.setProperty('--rotation', rotationRatio * 360);
+}
+
+setClock();
+// Analogue Clock end
