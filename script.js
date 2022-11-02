@@ -48,27 +48,29 @@ setInterval(() => {
 
   time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + session;
   calender.innerHTML = `${day}, ${date}-${month}-${year}`;
-
-  // Analogue Clock
-
-  function setClock() {
-    const secondsRatio = seconds / 60;
-    const minutesRatio = (secondsRatio + minutes) / 60;
-    const hoursRatio = (minutesRatio + hours) / 12;
-
-    const hourHand = document.getElementById('hour');
-    const minuteHand = document.getElementById('minute');
-    const secondHand = document.getElementById('second');
-
-    setRotation(secondHand, secondsRatio);
-    setRotation(minuteHand, minutesRatio);
-    setRotation(hourHand, hoursRatio);
-  }
-
-  function setRotation(e, rotationRatio) {
-    e.style.setProperty('--rotation', rotationRatio * 360);
-  }
-
-  setClock();
-  // Analogue Clock end
 }, 100);
+
+// Analogue Clock
+setInterval(setClock, 1000);
+
+function setClock() {
+  const hourHand = document.getElementById('hour');
+  const minuteHand = document.getElementById('minute');
+  const secondHand = document.getElementById('second');
+
+  const currentDate = new Date();
+  const secondsRatio = currentDate.getSeconds() / 60;
+  const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
+  const hoursRatio = (minutesRatio + currentDate.getHours()) / 12;
+
+  setRotation(secondHand, secondsRatio);
+  setRotation(minuteHand, minutesRatio);
+  setRotation(hourHand, hoursRatio);
+}
+
+function setRotation(e, rotationRatio) {
+  e.style.setProperty('--rotation', rotationRatio * 360);
+}
+
+setClock();
+// Analogue Clock end
